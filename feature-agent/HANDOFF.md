@@ -92,7 +92,7 @@ Lightweight | Full
 ## Cross-reference map
 
 ```text
-/plan (orchestrator)
+/feature-agent (orchestrator)
        │
        ▼
 read docs/PROJECT_CONTEXT.md  (hard gate)

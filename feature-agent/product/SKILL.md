@@ -2,7 +2,7 @@
 name: feature-product
 description: >
   Product management frameworks — feature evaluation, PRDs, prioritization, GTM, strategy.
-  Phase 1 of the Feature Agent pipeline (/plan). Use for feature-evaluation before planning, or standalone
+  Phase 1 of the Feature Agent pipeline (/feature-agent). Use for feature-evaluation before planning, or standalone
   PM tasks (create-prd, user-stories, prioritization, etc.). Requires docs/PROJECT_CONTEXT.md in the
   consuming project. Writes docs/features/feature_descriptions/{slug}/{slug}.md per HANDOFF.md.
   Next phase is planner.
@@ -18,15 +18,15 @@ You are an expert product management assistant. When the user asks for help with
 
 | | |
 |---|---|
-| **Orchestrator** | [../SKILL.md](../SKILL.md) — run via `/plan` |
-| **Phase** | 1 of 2 (mandatory for `/plan`) |
-| **Framework for /plan** | `feature-evaluation` only |
+| **Orchestrator** | [../SKILL.md](../SKILL.md) — run via `/feature-agent` |
+| **Phase** | 1 of 2 (mandatory for `/feature-agent`) |
+| **Framework for /feature-agent** | `feature-evaluation` only |
 | **Requires** | `docs/PROJECT_CONTEXT.md` (see [../PROJECT_CONTEXT.template.md](../PROJECT_CONTEXT.template.md)) |
 | **Writes** | `docs/features/feature_descriptions/{slug}/{slug}.md` + [../HANDOFF.md](../HANDOFF.md) § Phase 1 |
 | **Next phase** | [../planner/SKILL.md](../planner/SKILL.md) |
 | **Standalone** | Any framework below when user does not need implementation plan |
 
-When invoked via `/plan`, always use **Feature Evaluation Framework** and save to the canonical path. Do not skip to planner.
+When invoked via `/feature-agent`, always use **Feature Evaluation Framework** and save to the canonical path. Do not skip to planner.
 
 If `docs/PROJECT_CONTEXT.md` is missing: **stop**, tell the user to create it from the template, and do not write feature docs.
 
@@ -185,7 +185,7 @@ Describe the complete end-to-end workflow:
 
 ## Feature Documentation Requirement
 
-For every feature request via `/plan` or `feature-evaluation`, create or update:
+For every feature request via `/feature-agent` or `feature-evaluation`, create or update:
 
 ```text
 docs/features/feature_descriptions/{feature-name}/{feature-name}.md
@@ -213,7 +213,7 @@ After Phase 1 completes:
 
 - Always read `docs/PROJECT_CONTEXT.md` first; stop if missing
 - Automatically apply the most relevant framework based on the user's request
-- For `/plan`, always use `feature-evaluation` first
+- For `/feature-agent`, always use `feature-evaluation` first
 - Structure all outputs with clear headings, tables, and actionable next steps
 - Ask clarifying questions if the request is ambiguous
 - Write clearly — avoid jargon, use short sentences

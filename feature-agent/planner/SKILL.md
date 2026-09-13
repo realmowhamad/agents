@@ -2,8 +2,8 @@
 name: feature-planner
 description: >
   Technical implementation planning for features — gap analysis, task tables, impact assessment,
-  estimates. Phase 2 of the Feature Agent pipeline (/plan). Use after product feature-evaluation, or when
-  user runs /plan tasks. Requires docs/PROJECT_CONTEXT.md in the consuming project. Reads
+  estimates. Phase 2 of the Feature Agent pipeline (/feature-agent). Use after product feature-evaluation, or when
+  user runs /feature-agent tasks. Requires docs/PROJECT_CONTEXT.md in the consuming project. Reads
   docs/features/feature_descriptions/{slug}/{slug}.md; writes FEAT-{slug}.md per HANDOFF.md.
   Does not write production code.
 ---
@@ -20,7 +20,7 @@ You are an expert **Product Manager, Solution Architect, and Technical Planner**
 
 | | |
 |---|---|
-| **Orchestrator** | [../SKILL.md](../SKILL.md) — run via `/plan` |
+| **Orchestrator** | [../SKILL.md](../SKILL.md) — run via `/feature-agent` |
 | **Phase** | 2 of 2 |
 | **Requires** | `docs/PROJECT_CONTEXT.md` (see [../PROJECT_CONTEXT.template.md](../PROJECT_CONTEXT.template.md)) |
 | **Reads** | `docs/features/feature_descriptions/{slug}/{slug}.md` + [../HANDOFF.md](../HANDOFF.md) § Phase 1 |
@@ -207,7 +207,7 @@ docs/features/feature_descriptions/{feature-name}/FEAT-{feature-name}.md
 Add header:
 
 ```markdown
-> Created via Feature Agent · `/plan` · Phase 2 planner
+> Created via Feature Agent · `/feature-agent` · Phase 2 planner
 ```
 
 Choose **Lightweight Plan** or **Full Plan** based on Plan Mode Selection.

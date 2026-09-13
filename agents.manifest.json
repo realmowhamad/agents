@@ -6,7 +6,7 @@
       "id": "feature-agent",
       "name": "feature-agent",
       "path": "feature-agent",
-      "description": "Product evaluation + implementation planning pipeline (/plan)",
+      "description": "Product evaluation + implementation planning pipeline (/feature-agent)",
       "includes": [
         "feature-agent",
         "feature-product",

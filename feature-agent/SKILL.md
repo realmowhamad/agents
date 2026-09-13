@@ -1,16 +1,18 @@
 ---
 name: feature-agent
 description: >
-  Orchestrates the full Feature Agent pipeline — product evaluation and implementation planning —
-  in one command. Use when the user runs /plan, asks to plan a feature, evaluate a feature,
-  create FEAT docs, or wants product + planner sub-agents to work together. Chains product
-  (feature-evaluation) → planner with shared handoff artifacts. Requires docs/PROJECT_CONTEXT.md
-  in the consuming project. Output feeds /build, /ui, /api.
+  Orchestrates the full Feature Agent pipeline — product evaluation and implementation planning.
+  Use when the user runs /feature-agent, asks to plan a feature, evaluate a feature, create FEAT docs,
+  or wants product + planner sub-agents together. Chains product (feature-evaluation) → planner with
+  shared handoff artifacts. Requires docs/PROJECT_CONTEXT.md. Output feeds /build, /ui, /api.
+disable-model-invocation: true
 ---
 
 # Feature Agent — Orchestrator
 
 You are the **Feature Agent lead**. One user request runs the product → planner pipeline. Sub-agents share one handoff file and reference each other's outputs.
+
+**Invoke with:** `/feature-agent` in Cursor chat (after this skill is installed in the project).
 
 **This agent is project-agnostic.** All product-specific facts (what the product is, requirements, roles, surfaces, stack) come from the consuming project's `docs/PROJECT_CONTEXT.md`. Never invent domain roles, apps, or constraints that are not in that file.
 
@@ -27,12 +29,14 @@ Phase 2  planner  →  Implementation plan (FEAT doc + task table)
 
 Run this orchestrator when the user:
 
-- Types `/plan`
+- Types `/feature-agent` (primary)
 - Asks to plan, evaluate, or scope a feature
 - Wants a FEAT doc or implementation task breakdown
 - Needs product + technical planning together
 
-Do **not** skip Phase 1 unless the user explicitly says so (e.g. `/plan tasks`, existing feature doc).
+Do **not** skip Phase 1 unless the user explicitly says so (e.g. `/feature-agent tasks`, existing feature doc).
+
+At the start of the run, confirm: `Running /feature-agent` and the active mode (see Override modes).
 
 ---
 
@@ -66,7 +70,7 @@ Handoff contract: [HANDOFF.md](HANDOFF.md)
 ## Phase 1 — Product Evaluation
 
 **Skill:** [product/SKILL.md](product/SKILL.md)  
-**Framework:** `feature-evaluation` (mandatory for `/plan`)
+**Framework:** `feature-evaluation` (mandatory for `/feature-agent`)
 
 1. Read `docs/PROJECT_CONTEXT.md`; search codebase for existing implementation.
 2. Apply the **Feature Evaluation Framework** (6 sections), using roles and users from PROJECT_CONTEXT.
@@ -133,10 +137,10 @@ When Phase 2 passes gates:
 
 | User says | Run |
 |-----------|-----|
-| `/plan` (default) | Phase 1 → Phase 2 |
-| `/plan evaluate` | Phase 1 only |
-| `/plan tasks` | Phase 2 only (`{slug}.md` must exist) |
-| `/plan refresh` | Phase 1 update → Phase 2 re-run |
+| `/feature-agent` (default) | Phase 1 → Phase 2 |
+| `/feature-agent evaluate` | Phase 1 only |
+| `/feature-agent tasks` | Phase 2 only (`{slug}.md` must exist) |
+| `/feature-agent refresh` | Phase 1 update → Phase 2 re-run |
 
 For **non-feature PM work** (PRD, prioritization, GTM, etc.) invoke [product/SKILL.md](product/SKILL.md) directly — no planner phase. Still read `docs/PROJECT_CONTEXT.md` first.
 

@@ -41,7 +41,9 @@ Examples:
   npx cursor-agents list
 
 After feature-agent install, create docs/PROJECT_CONTEXT.md in your project
-from feature-agent/PROJECT_CONTEXT.template.md (required before /plan).
+from feature-agent/PROJECT_CONTEXT.template.md (required before /feature-agent).
+
+After install, in Cursor chat type: /feature-agent
 `.trim();
 
 function loadManifest() {
@@ -166,6 +168,9 @@ function installAgents(agents, installRoot, dryRun) {
         console.log(`    - ${req}`);
       }
     }
+    if (agent.id === "feature-agent") {
+      console.log(`  In Cursor chat, run: /feature-agent`);
+    }
   }
 }
 
@@ -216,6 +221,7 @@ function main() {
       );
       installAgents(agents, installRoot, args.dryRun);
       console.log("\nDone. Restart Cursor or reopen the project if skills do not appear.");
+      console.log("Then type /feature-agent in chat (after creating docs/PROJECT_CONTEXT.md).");
       break;
     }
     case "uninstall":

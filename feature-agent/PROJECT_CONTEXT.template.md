@@ -6,7 +6,7 @@ Copy this file into the **consuming project** as:
 docs/PROJECT_CONTEXT.md
 ```
 
-Feature Agent **will not run** `/plan` without this file. Fill every section that applies; mark N/A explicitly when not relevant.
+Feature Agent **will not run** `/feature-agent` without this file. Fill every section that applies; mark N/A explicitly when not relevant.
 
 ---
 

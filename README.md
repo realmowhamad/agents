@@ -55,7 +55,7 @@ node /path/to/agents/bin/cli.mjs install feature-agent
 
 | Agent ID | What it does |
 |----------|----------------|
-| `feature-agent` | Product evaluation → implementation plan (`/plan`). Includes `feature-product` + `feature-planner`. |
+| `feature-agent` | Product evaluation → implementation plan (`/feature-agent`). Includes `feature-product` + `feature-planner`. |
 
 More agents can be added later as top-level folders; register each entry in `agents.manifest.json`.
 
@@ -73,9 +73,9 @@ More agents can be added later as top-level folders; register each entry in `age
    .cursor/skills/feature-agent/PROJECT_CONTEXT.template.md
    ```
 
-3. Fill in product overview, requirements, roles, surfaces, and stack. `/plan` will not run without this file.
+3. Fill in product overview, requirements, roles, surfaces, and stack. `/feature-agent` will not run without this file.
 
-4. In Cursor chat, run `/plan` (or invoke the `feature-agent` skill).
+4. In Cursor chat, type **`/feature-agent`**.
 
 ## Uninstall
 
