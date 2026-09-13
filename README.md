@@ -1,0 +1,160 @@
+# Agents
+
+Reusable **Cursor agent skills** you can install into any project — all together or one at a time.
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) 18+
+- [Cursor](https://cursor.com/) (skills load from `.cursor/skills/` or `~/.cursor/skills/`)
+
+## Quick start
+
+From this repository (local path) — run inside the project where you want skills installed:
+
+```bash
+# List agents
+npx --yes /path/to/agents list
+
+# Install every agent into the current project (.cursor/skills/)
+npx --yes /path/to/agents install
+
+# Install only feature-agent
+npx --yes /path/to/agents install feature-agent
+
+# Install globally (all projects on this machine)
+npx --yes /path/to/agents install --global
+npx --yes /path/to/agents install --global feature-agent
+```
+
+On Windows (PowerShell), from inside this repo while your app is elsewhere:
+
+```powershell
+cd C:\path\to\your-app
+npx --yes C:\path\to\agents install
+npx --yes C:\path\to\agents install feature-agent
+```
+
+After you publish this repo to GitHub (replace `OWNER/REPO`):
+
+```bash
+npx --yes github:OWNER/REPO install
+npx --yes github:OWNER/REPO install feature-agent
+npx --yes github:OWNER/REPO install --global
+```
+
+If published to npm as `cursor-agents`:
+
+```bash
+npx cursor-agents install
+npx cursor-agents install feature-agent
+npx cursor-agents install --global
+```
+
+Or clone once and run the CLI from the clone:
+
+```bash
+git clone https://github.com/OWNER/REPO.git
+cd REPO
+node bin/cli.mjs install
+# or, from another project:
+node /path/to/REPO/bin/cli.mjs install feature-agent
+```
+
+### Alternative: `npx skills` (ecosystem CLI)
+
+If you use the open [skills](https://www.npmjs.com/package/skills) CLI after the repo is on GitHub:
+
+```bash
+# All skills discovered in the repo
+npx skills add OWNER/REPO --agent cursor -y
+
+# One skill by name
+npx skills add OWNER/REPO --agent cursor -s feature-agent -y
+
+# Global
+npx skills add OWNER/REPO --agent cursor -g -s feature-agent -y
+```
+
+## Available agents
+
+| Agent ID | What it does |
+|----------|----------------|
+| `feature-agent` | Product evaluation → implementation plan (`/plan`). Includes `feature-product` + `feature-planner`. |
+
+More agents can be added later as top-level folders; register each entry in `agents.manifest.json`.
+
+## After installing `feature-agent`
+
+1. In your **project**, create:
+
+   ```text
+   docs/PROJECT_CONTEXT.md
+   ```
+
+2. Copy from the installed skill template:
+
+   ```text
+   .cursor/skills/feature-agent/PROJECT_CONTEXT.template.md
+   ```
+
+   (or from this repo: `feature-agent/PROJECT_CONTEXT.template.md`)
+
+3. Fill in product overview, requirements, roles, surfaces, and stack. `/plan` will not run without this file.
+
+4. In Cursor chat, run `/plan` (or invoke the `feature-agent` skill).
+
+## Uninstall
+
+```bash
+npx --yes /path/to/agents uninstall feature-agent
+npx --yes /path/to/agents uninstall --global feature-agent
+npx --yes /path/to/agents uninstall   # remove all agents listed in the manifest
+```
+
+## CLI reference
+
+```text
+npx cursor-agents list
+npx cursor-agents install [agent...]
+npx cursor-agents uninstall [agent...]
+
+Options:
+  -g, --global       Use ~/.cursor/skills instead of ./.cursor/skills
+  -t, --target DIR   Custom install directory
+  --dry-run          Show what would happen without writing files
+  -h, --help         Help
+```
+
+Binary names: `agents` and `cursor-agents` (same CLI).
+
+## Where files go
+
+| Scope | Path |
+|-------|------|
+| Project (default) | `.cursor/skills/<agent-id>/` |
+| Global (`--global`) | `~/.cursor/skills/<agent-id>/` |
+
+Cursor discovers skills recursively under those folders. Agent folder names are unchanged (`feature-agent`, etc.).
+
+## Repository layout
+
+```text
+agents/
+├── README.md
+├── package.json
+├── agents.manifest.json
+├── bin/cli.mjs
+└── feature-agent/
+    ├── SKILL.md
+    ├── HANDOFF.md
+    ├── PROJECT_CONTEXT.template.md
+    ├── product/SKILL.md
+    └── planner/SKILL.md
+```
+
+## Adding a new agent
+
+1. Create a top-level folder with the same name as the skill (do not rename existing agents).
+2. Add a `SKILL.md` with `name` + `description` frontmatter.
+3. Register it in `agents.manifest.json`.
+4. Include the folder in `package.json` → `files`.

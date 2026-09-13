@@ -1,0 +1,30 @@
+{
+  "name": "cursor-agents",
+  "version": "1.0.0",
+  "description": "Install Cursor agent skills — all at once or individually",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "agents": "./bin/cli.mjs",
+    "cursor-agents": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "feature-agent",
+    "agents.manifest.json",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "cursor",
+    "agents",
+    "skills",
+    "ai"
+  ],
+  "scripts": {
+    "agents": "node ./bin/cli.mjs",
+    "list": "node ./bin/cli.mjs list"
+  }
+}

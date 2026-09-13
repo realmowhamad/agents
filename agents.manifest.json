@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "defaultTarget": "cursor",
+  "agents": [
+    {
+      "id": "feature-agent",
+      "name": "feature-agent",
+      "path": "feature-agent",
+      "description": "Product evaluation + implementation planning pipeline (/plan)",
+      "includes": [
+        "feature-agent",
+        "feature-product",
+        "feature-planner"
+      ],
+      "requires": [
+        "docs/PROJECT_CONTEXT.md (copy from feature-agent/PROJECT_CONTEXT.template.md)"
+      ]
+    }
+  ]
+}
