@@ -2,6 +2,8 @@
 
 Reusable **Cursor agent skills** you can install into any project — all together or one at a time.
 
+**Repo:** https://github.com/realmowhamad/agents
+
 ## Requirements
 
 - [Node.js](https://nodejs.org/) 18+
@@ -9,70 +11,44 @@ Reusable **Cursor agent skills** you can install into any project — all togeth
 
 ## Quick start
 
-From this repository (local path) — run inside the project where you want skills installed:
+From the project where you want the skills installed:
 
 ```bash
 # List agents
-npx --yes /path/to/agents list
+npx --yes github:realmowhamad/agents list
 
 # Install every agent into the current project (.cursor/skills/)
-npx --yes /path/to/agents install
+npx --yes github:realmowhamad/agents install
 
 # Install only feature-agent
-npx --yes /path/to/agents install feature-agent
+npx --yes github:realmowhamad/agents install feature-agent
 
 # Install globally (all projects on this machine)
-npx --yes /path/to/agents install --global
-npx --yes /path/to/agents install --global feature-agent
-```
-
-On Windows (PowerShell), from inside this repo while your app is elsewhere:
-
-```powershell
-cd C:\path\to\your-app
-npx --yes C:\path\to\agents install
-npx --yes C:\path\to\agents install feature-agent
-```
-
-After you publish this repo to GitHub (replace `OWNER/REPO`):
-
-```bash
-npx --yes github:OWNER/REPO install
-npx --yes github:OWNER/REPO install feature-agent
-npx --yes github:OWNER/REPO install --global
-```
-
-If published to npm as `cursor-agents`:
-
-```bash
-npx cursor-agents install
-npx cursor-agents install feature-agent
-npx cursor-agents install --global
-```
-
-Or clone once and run the CLI from the clone:
-
-```bash
-git clone https://github.com/OWNER/REPO.git
-cd REPO
-node bin/cli.mjs install
-# or, from another project:
-node /path/to/REPO/bin/cli.mjs install feature-agent
+npx --yes github:realmowhamad/agents install --global
+npx --yes github:realmowhamad/agents install --global feature-agent
 ```
 
 ### Alternative: `npx skills` (ecosystem CLI)
 
-If you use the open [skills](https://www.npmjs.com/package/skills) CLI after the repo is on GitHub:
-
 ```bash
 # All skills discovered in the repo
-npx skills add OWNER/REPO --agent cursor -y
+npx skills add realmowhamad/agents --agent cursor -y
 
 # One skill by name
-npx skills add OWNER/REPO --agent cursor -s feature-agent -y
+npx skills add realmowhamad/agents --agent cursor -s feature-agent -y
 
 # Global
-npx skills add OWNER/REPO --agent cursor -g -s feature-agent -y
+npx skills add realmowhamad/agents --agent cursor -g -s feature-agent -y
+```
+
+### Local path / clone
+
+```bash
+git clone https://github.com/realmowhamad/agents.git
+cd your-app
+npx --yes /path/to/agents install
+# or
+node /path/to/agents/bin/cli.mjs install feature-agent
 ```
 
 ## Available agents
@@ -97,8 +73,6 @@ More agents can be added later as top-level folders; register each entry in `age
    .cursor/skills/feature-agent/PROJECT_CONTEXT.template.md
    ```
 
-   (or from this repo: `feature-agent/PROJECT_CONTEXT.template.md`)
-
 3. Fill in product overview, requirements, roles, surfaces, and stack. `/plan` will not run without this file.
 
 4. In Cursor chat, run `/plan` (or invoke the `feature-agent` skill).
@@ -106,9 +80,9 @@ More agents can be added later as top-level folders; register each entry in `age
 ## Uninstall
 
 ```bash
-npx --yes /path/to/agents uninstall feature-agent
-npx --yes /path/to/agents uninstall --global feature-agent
-npx --yes /path/to/agents uninstall   # remove all agents listed in the manifest
+npx --yes github:realmowhamad/agents uninstall feature-agent
+npx --yes github:realmowhamad/agents uninstall --global feature-agent
+npx --yes github:realmowhamad/agents uninstall   # remove all agents listed in the manifest
 ```
 
 ## CLI reference

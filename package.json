@@ -4,6 +4,14 @@
   "description": "Install Cursor agent skills — all at once or individually",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realmowhamad/agents.git"
+  },
+  "homepage": "https://github.com/realmowhamad/agents#readme",
+  "bugs": {
+    "url": "https://github.com/realmowhamad/agents/issues"
+  },
   "bin": {
     "agents": "./bin/cli.mjs",
     "cursor-agents": "./bin/cli.mjs"
